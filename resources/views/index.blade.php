@@ -73,7 +73,7 @@
 <div class="flex flex-col sm:flex-row justify-between sm:py-24 py-12 items-center">
     <!-- Image div with responsive classes -->
     <div class="sm:order-first mb-10 lg:mb-0 lg:w-auto">
-        {{-- <img src="/images/design (1).png" class="h-full rounded" alt="Image" style="width: 700px"> --}}
+        {{-- <img src="/images/design(1).png" class="h-full rounded" alt="Image" style="width: 700px"> --}}
         <img src="{{asset('images/design (1).png')}}" class="h-full rounded" alt="Image" style="width: 700px">
     </div>
 
