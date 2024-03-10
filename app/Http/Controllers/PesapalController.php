@@ -172,11 +172,11 @@ class PesapalController extends Controller
         $urlOrder = 'https://pay.pesapal.com/v3/api/Transactions/SubmitOrderRequest';
 
         $requestDataOrder = [
-            "id" => 'Test' . rand(1, 1000000),
+            "id" => 'NCLEX' . rand(1, 1000000),
             "currency" => "KES",
             "amount" => 1.00,
-            "description" => "Payment description goes here",
-            "callback_url" => "https://51a1-102-0-6-211.ngrok-free.app/payments",
+            "description" => "Payment for Nclex Subscription",
+            "callback_url" => "http://nclex.kaya.co.ke/payments",
             "notification_id" => "fd36d388-7713-4da8-beb8-dd86b9f9d4ce",
             "billing_address" => [
                 "email_address" => $request->email,
@@ -209,14 +209,6 @@ class PesapalController extends Controller
 
         return redirect(strval($redir));
         
-        // if ($redir){
-        //     return redirect('//meet.google.com/mkz-pkkf-ned');
-        // }
-        // Dispatch the RedirectJob
-        // if ($redir) {
-        //     RedirectJob::dispatch($redir);
-        // }
-        // return $this->confirmorder($redir,$token);
     }
 
     public function confirmorder($redir,$token)
