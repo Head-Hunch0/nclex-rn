@@ -45,7 +45,7 @@
     </br>
         <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Welcome! Below are some of our materials for your use.</p> 
     </br>
-        <a href="/testimonials" class="mb-8 text-lg font-bold text-blue-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Join Class</a>
+        <a href="/https://meet.google.com/mkz-pkkf-ned" class="mb-8 text-lg font-bold text-blue-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Join Class</a>
     </div>
 
 
