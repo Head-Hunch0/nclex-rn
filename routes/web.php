@@ -27,18 +27,16 @@ Route::get('/testimonials', function() {
 Route::get('/demo', function() {
     return view('demo');
 });
+Route::get('/demo-active', function() {
+    return view('demo-active');
+});
+Route::get('/login', function() {
+    return view('login');
+});
 
 // PesaPal API Endpoints
 
-Route::match(['get', 'post'], '/payments', function (Request $request) {
-    // Log the incoming data from Pesapal
-    
-    Log::info($request->all());
+Route::match(['get', 'post'], '/payments', [PesapalController::class, 'getOrderStatus']);
 
-    // return redirect('https://meet.google.com/mkz-pkkf-ned');
-
-    // You can handle the incoming data from Pesapal here
-});
-
-Route::post('/request-token', [PesapalController::class, 'submitOrderRequest2']);
-// Route::post('/request-token', [PesapalController::class, 'submitOrderRequest2']);
+Route::post('/payment-initiate', [PesapalController::class, 'makepurhcase']);
+Route::post('/log-in', [PesapalController::class, 'loginuser']);

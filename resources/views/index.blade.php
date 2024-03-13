@@ -33,14 +33,33 @@
 .animate-scroll {
     animation: scroll 3s infinite; /* Adjust animation duration as needed */
 }
+.bounce-image {
+    transform: translateY(0); /* Initial position */
+    animation: bounceAnimation 3s ease-in-out infinite; /* Animation properties */
+    animation-play-state: running; /* Animation is running by default */
+}
+
+.bounce-image:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+
+@keyframes bounceAnimation {
+    0%, 100% {
+        transform: translateY(0); /* Start and end position */
+    }
+    50% {
+        transform: translateY(-20px); /* Bounce height */
+    }
+}
 </style>
 
 <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-      {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-15" alt="Flowbite Logo"> --}}
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NCLEX-RN TUTORS</span>
+  <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <img src="{{ asset('images/logo.jpg') }}" class="h-30 rounded mb-5 lg:mb-0 lg:w-auto" alt="" style="width: 100px">
+    <span class="self-center text-2xl font-semibold whitespace-nowrap hidden sm:block dark:text-white">NCLEX-RN TUTORS</span>
   </a>
+
   <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <a href="#joinclass" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Join Class</a>
       <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
@@ -53,7 +72,7 @@
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
     <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
       <li>
-        <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
+        <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</a>
       </li>
       <li>
         <a href="/demo" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Demo</a>
@@ -73,39 +92,46 @@
 <div class="flex flex-col sm:flex-row justify-between sm:py-24 py-12 items-center">
     <!-- Image div with responsive classes -->
     <div class="sm:order-first mb-10 lg:mb-0 lg:w-auto">
-        <img src="{{asset('images/Design(1).png')}}" class="h-full rounded" alt="Image" style="width: 700px">
+        <img src="{{asset('images/Design(1).png')}}" class="h-full rounded bounce-image" alt="Image" style="width: 700px">
     </div>
 
     <!-- Content div with responsive classes -->
     <div class="flex flex-col justify-center sm:pt-10 items-center sm:text-center">
         <h1 class="mb text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-3xl dark:text-white">Personal coaching. Guidance through the NCLEX preparation and registration process.</h1>
         <p class="mb-10 pt-10 text-lg font-normal text-gray-500 lg:text-xl sm:px-3 lg:px-24 dark:text-gray-200">Because NCLEX is such a personal journey we provide individualized education guidance and support preparing you to face the Mountain that is NCLEX with confidence.</p>
-        <a href="#packages" class="inline-flex justify-center items-center py-4 px-5 text-lg font-medium text-center text-white shadow-lg rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                View Products
+        {{-- <a href="#packages" class="inline-flex justify-center items-center py-4 px-5 text-lg font-medium text-center text-white shadow-lg rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                
                 <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
-        </a>
+        </a> --}}
+        <a href="#packages" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+View Products
+</span>
+</a>
     </div>
 </div>
 
 
 
-<div class="flex justify-center gap-16 bg-gray-25 py-12">
-<p class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+{{-- <div class="flex justify-center gap-16 bg-gray-25 py-12"> --}}
+<p class="relative inline-flex py-3.5 px-5 items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+<div class="flex justify-center gap-8 sm:gap-16 bg-gray-25 py-12">
+
+{{-- <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"> --}}
 Affordable NCLEX-RN Preparation Classes.
-</span>
+{{-- </span> --}}
 </p>
-<p class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+<p class="relative inline-flex py-2.5 px-5 items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+{{-- <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"> --}}
 Live Classes Online
-</span>
+{{-- </span> --}}
 </p>
-<p class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+<p class="relative inline-flex py-2.5 px-5 items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+{{-- <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"> --}}
 Onboarding to be a USRN after passing NCLEX.
-</span>
+{{-- </span> --}}
 </p>
 
 
@@ -188,8 +214,8 @@ Onboarding to be a USRN after passing NCLEX.
             <p class="mb-4 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">Our tutoring services are tailored to your individual needs, ensuring that you achieve your goals in a timely manner. Our NCLEX-RN tutors are highly knowledgeable in test preparation and strategy, providing you with expert guidance. With personalized study plans and targeted tutoring, we will equip you with the necessary skills to excel in the areas you require the most assistance. Approach your exam with self-assurance, as we guarantee your success.</p>
         </div>
         
-        <img src="/images/animated-female-nurse-nobg.png" class="h-30 rounded mb-5 lg:mb-0 lg:w-auto" alt="" style="width: 300px">
-        {{-- <img src="{{asset('images/animated-female-nurse-nobg.png')}}" class="h-30 rounded mb-5 lg:mb-0 lg:w-auto" alt="" style="width: 300px"> --}}
+        {{-- <img src="/images/animated-female-nurse-nobg.png" class="h-30 rounded mb-5 lg:mb-0 lg:w-auto" alt="" style="width: 300px"> --}}
+        <img src="{{asset('images/animated-female-nurse-nobg.png')}}" class="h-30 rounded mb-5 lg:mb-0 lg:w-auto" alt="" style="width: 300px">
     </div>
 </section>
 
@@ -255,8 +281,9 @@ START YOUR CLASSES
     </div>
 </section>
 
-<section class=" px-16 bg-purple-100 py-24 rounded-xl">
-    
+{{-- <section class=" px-16 bg-purple-100 py-24 rounded-xl"> --}}
+<section class="px-8 sm:px-16 bg-purple-100 py-12 sm:py-24 rounded-xl">
+
 <h5 class="mb-10 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-2xl dark:text-white">Everything you need to succeed</h5>
 <div class="w-full text-wrap py-12 px-8 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
   {{-- <div class="overflow-x-auto bg-gray-200 rounded-lg" style="max-width: 100%; -ms-overflow-style: none; scrollbar-width: none;"> --}}
@@ -571,7 +598,7 @@ REGISTER NOW
 
 <h3 id="joinclass" class="text-center text-2xl text-bold py-5">Join Class</h3>
 <div class="mx-auto mb-10 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-    <form class="space-y-6" action="/request-token" method="POST" >
+    <form class="space-y-6" action="/payment-initiate" method="POST" >
         @csrf
         <h5 class="text-xl font-medium text-gray-900 dark:text-white">Create an account</h5>
         <div>
@@ -579,37 +606,27 @@ REGISTER NOW
             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
         </div>
         <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
-            <input type="text" name="first_name" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+            <label for="names" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Names</label>
+            <input type="text" name="names" id="names" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="John Doe" required />
         </div>
         <div>
-            <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
-            <input type="text" name="last_name" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="**********" required min="8"/>
         </div>
         <div>
             <label for="number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your number</label>
-            <!-- <input type="number" name="number" id="number" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required /> -->
             <div class="relative">
         <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 19 18">
                 <path d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"/>
             </svg>
         </div>
-        <input type="text" id="number" name="number" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="123-456-7890" required />
+        <input type="number" id="number" name="number" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="123-456-7890" required />
     </div>
         </div>
-        <!-- <div class="flex items-start">
-            <div class="flex items-start">
-                <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
-                </div>
-                <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-            </div>
-            <a href="#" class="ms-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
-        </div> -->
         <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Account</button>
         <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Already registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Login</a>
+            Already registered? <a href="/login" class="text-blue-700 hover:underline dark:text-blue-500">Login</a>
         </div>
     </form>
 </div>
@@ -625,7 +642,7 @@ REGISTER NOW
 
 
 
-<div  id="faqs" class="bg-gray-5 pt-5 px-5 lg:px-16">
+<div  id="faqs" class="bg-gray-5 pt-5 px-5 lg:px-8">
 <h2 class="mb-10 text-center text-3xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-3xl dark:text-white">FAQs</h2>
 
 
@@ -753,8 +770,8 @@ REGISTER NOW
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
               <a href="#" class="flex items-center">
-                  {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" /> --}}
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NCLEX-RN Tutors</span>
+                  <img src="{{asset('images/logo.jpg')}}" class="h-full rounded" alt="Image" style="width: 100px">
+                  <span class="self-center text-2xl mx-4 font-semibold whitespace-nowrap dark:text-white">NCLEX-RN Tutors</span>
               </a>
           </div>
           <div class="grid grid-cols- gap-8 sm:gap-6 sm:grid-cols-3">
