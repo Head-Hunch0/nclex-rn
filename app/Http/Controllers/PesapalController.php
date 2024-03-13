@@ -58,7 +58,7 @@ class PesapalController extends Controller
                 "email_address" => $request->email,
                 "phone_number" => $request->number,
                 "country_code" => "",
-                "first_name" => $request->first_name,
+                "first_name" => $request->names,
                 "middle_name" => "",
                 "last_name" => $request->last_name,
                 "line_1" => "",
