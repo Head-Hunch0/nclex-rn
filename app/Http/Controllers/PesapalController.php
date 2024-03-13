@@ -52,7 +52,7 @@ class PesapalController extends Controller
             "amount" => 1.00,
             "description" => "Payment for Nclex Subscription",
             // "callback_url" => "https://01fb-102-0-6-211.ngrok-free.app/payments?transaction_id=".$transactionId,
-            "callback_url" => "https://01fb-102-0-6-211.ngrok-free.app/payments",
+            "callback_url" => "https://nclex.kaya.co.ke/payments",
             "notification_id" => "fd36d388-7713-4da8-beb8-dd86b9f9d4ce",
             "billing_address" => [
                 "email_address" => $request->email,
